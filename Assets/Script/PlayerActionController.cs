@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 public class PlayerActionController : MonoBehaviour
 {
@@ -14,10 +17,13 @@ public class PlayerActionController : MonoBehaviour
     private Vector2 _smoothVector = Vector2.zero;
     [SerializeField] private float _smoothTime = 0.05f;
 
+    [SerializeField] private GameObject _flameShot;
+
 
     void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
+        _flameShot.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,14 +36,29 @@ public class PlayerActionController : MonoBehaviour
     {
         _smoothMove = Vector2.SmoothDamp(_smoothMove, _moveVector, ref _smoothVector, _smoothTime);
         _playerRigidbody.velocity = _smoothMove * _moveSpeed;
-        print(_smoothMove);
+        // print(_smoothMove);
         //利用SmoothDamp會逐漸達到目標值(_moveVector)的功能來實現平滑移動,而非直接的移動
     }
 
-    public void Move(InputAction.CallbackContext CallBackContext)
+    public void Move(InputAction.CallbackContext callBackContext)
     {
-        _moveVector = CallBackContext.ReadValue<Vector2>();
+        _moveVector = callBackContext.ReadValue<Vector2>();
         //取得按鍵相應Vector2向量
+    }
+
+    public void Fire(InputAction.CallbackContext callbackContext)
+    {
+        print(callbackContext);
+        if (callbackContext.started)
+        {
+            print("fire");
+            _flameShot.SetActive(true);
+        }
+        if (callbackContext.canceled)
+        {
+            print("stop fire");
+            _flameShot.SetActive(false);
+        }
     }
 
 }
