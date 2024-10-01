@@ -5,24 +5,29 @@ using UnityEngine;
 public class MeatEnemyAction : MonoBehaviour
 {
     private Rigidbody2D _meatEnemyRigidbody;
+    private SpriteRenderer _meatRenderer;
     [SerializeField] private float _damageRate = 0.5f;
     private float _nextDamageTime = 0.0f;
     // [SerializeField] private float _damageForce = 1.0f;
     private int _coldHP = 10;
     private int _donenessHP = 10;
+    [SerializeField] private Vector3 _playLastPosition = Vector3.zero;
+    [SerializeField] private GameObject _playerGameObject;
+    [SerializeField] private float _meatMoveSpeed = 5f;
+    private bool _touchPlayer = false;
+    private float _nextTrackTime = 3.0f;
 
     void Start()
     {
         _meatEnemyRigidbody = GetComponent<Rigidbody2D>();
+        _meatRenderer = GetComponent<SpriteRenderer>();
+        _meatRenderer.color = new Color32(108, 222, 243, 255);
     }
 
     private void FixedUpdate()
     {
-        // if (Time.time >= _nextDamageTime)
-        // {
-        //     _nextDamageTime = Time.time + _damageRate;
-        //     print("fire!!!!!!!!!!!!"+_nextDamageTime);
-        // }
+        if (_coldHP > 0) MeatMove();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,13 +53,46 @@ public class MeatEnemyAction : MonoBehaviour
             print("解凍中");
             _coldHP--;
         }
-        else if(_coldHP<=0&&_donenessHP>0){
+        else if (_coldHP <= 0 && _donenessHP > 0)
+        {
             print("烤肉中");
             _donenessHP--;
-        }else if(_coldHP<=0&&_donenessHP<=0){
+            _meatRenderer.color = new Color32(241, 124, 129, 255);
+        }
+        else if (_coldHP <= 0 && _donenessHP <= 0)
+        {
             print("全熟有點焦");
-        }else{
+        }
+        else
+        {
             print("例外");
+        }
+    }
+
+    private void MeatMove()
+    {
+        if (_playLastPosition != _playerGameObject.transform.position)
+        {
+            _playLastPosition = _playerGameObject.transform.position;
+        }
+
+        if (_touchPlayer == false)
+        {
+            _meatEnemyRigidbody.transform.position = Vector3.MoveTowards(transform.position, _playLastPosition, _meatMoveSpeed * Time.deltaTime);
+        }
+        else if (_touchPlayer == true)
+        {
+            _nextTrackTime -= Time.deltaTime;
+            if (_nextTrackTime <= 0.0f) _touchPlayer = false;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            _touchPlayer = true;
+            _nextTrackTime = 3.0f;
         }
     }
 }

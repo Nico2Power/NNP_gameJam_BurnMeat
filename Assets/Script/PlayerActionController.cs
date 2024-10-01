@@ -16,6 +16,7 @@ public class PlayerActionController : MonoBehaviour
     private Vector2 _smoothMove;
     private Vector2 _smoothVector = Vector2.zero;
     [SerializeField] private float _smoothTime = 0.05f;
+    private Vector2 _directionVector = new Vector2(1, 0);
 
     [SerializeField] private GameObject _flameShot;
 
@@ -44,11 +45,29 @@ public class PlayerActionController : MonoBehaviour
     {
         _moveVector = callBackContext.ReadValue<Vector2>();
         //取得按鍵相應Vector2向量
+
+        if (_moveVector.x != 0)
+        {
+            _directionVector = _moveVector;
+            print(_directionVector);
+        }
+        //確定最後面對方向 控制開火方向
+
     }
 
     public void Fire(InputAction.CallbackContext callbackContext)
     {
         print(callbackContext);
+
+        if (_directionVector.x > 0)
+        {
+            _flameShot.transform.localPosition = new Vector2(4, _flameShot.transform.localPosition.y);
+        }
+        else if (_directionVector.x < 0)
+        {
+            _flameShot.transform.localPosition = new Vector2(-4, _flameShot.transform.localPosition.y);
+        }
+
         if (callbackContext.started)
         {
             print("fire");
@@ -60,5 +79,10 @@ public class PlayerActionController : MonoBehaviour
             _flameShot.SetActive(false);
         }
     }
+    //Fire up and scale are (x,y)=(1.0,1.5) position y= +2 or -2
+
+    // private void PlayerDirectionCheck(){
+
+    // }
 
 }
