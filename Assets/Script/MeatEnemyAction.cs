@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeatEnemyAction : MonoBehaviour
@@ -15,7 +16,7 @@ public class MeatEnemyAction : MonoBehaviour
     [SerializeField] private GameObject _playerGameObject;
     [SerializeField] private float _meatMoveSpeed = 5f;
     private bool _touchPlayer = false;
-    private float _nextTrackTime = 3.0f;
+    private float _nextTrackTime = 1.0f;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class MeatEnemyAction : MonoBehaviour
     private void FixedUpdate()
     {
         if (_coldHP > 0) MeatMove();
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -41,7 +42,6 @@ public class MeatEnemyAction : MonoBehaviour
         {
             _nextDamageTime = Time.time + _damageRate;
             print("fire!!!!!!!!!!!!" + _nextDamageTime);
-            // _meatEnemyRigidbody.AddForce(transform.right*_damageForce);
             HPControl();
         }
     }
@@ -55,6 +55,7 @@ public class MeatEnemyAction : MonoBehaviour
         }
         else if (_coldHP <= 0 && _donenessHP > 0)
         {
+            gameObject.tag = "MeatFood";
             print("烤肉中");
             _donenessHP--;
             _meatRenderer.color = new Color32(241, 124, 129, 255);
@@ -75,15 +76,16 @@ public class MeatEnemyAction : MonoBehaviour
         {
             _playLastPosition = _playerGameObject.transform.position;
         }
+        _meatEnemyRigidbody.transform.position = Vector3.MoveTowards(transform.position, _playLastPosition, _meatMoveSpeed * Time.deltaTime);
 
-        if (_touchPlayer == false)
-        {
-            _meatEnemyRigidbody.transform.position = Vector3.MoveTowards(transform.position, _playLastPosition, _meatMoveSpeed * Time.deltaTime);
-        }
-        else if (_touchPlayer == true)
+        if (_touchPlayer == true)
         {
             _nextTrackTime -= Time.deltaTime;
-            if (_nextTrackTime <= 0.0f) _touchPlayer = false;
+            if (_nextTrackTime <= 0.0f)
+            {
+                _meatEnemyRigidbody.simulated = true;
+                _touchPlayer = false;
+            }
         }
     }
 
@@ -91,8 +93,9 @@ public class MeatEnemyAction : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            _meatEnemyRigidbody.simulated=false;
             _touchPlayer = true;
-            _nextTrackTime = 3.0f;
+            _nextTrackTime = 1.0f;
         }
     }
 }

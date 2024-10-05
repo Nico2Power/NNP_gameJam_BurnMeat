@@ -18,6 +18,12 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] private float _smoothTime = 0.05f;
     private Vector2 _directionVector = new Vector2(1, 0);
 
+    [SerializeField] private float _damageForce = 100f;
+    [SerializeField] private float _damageRate = 0.5f;
+    private float _nextDamageTime = 0.0f;
+    private bool _isDamageState = false;
+    private Vector2 _contactVector = Vector2.zero;
+
     [SerializeField] private GameObject _flameShot;
 
 
@@ -30,7 +36,15 @@ public class PlayerActionController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        PlayerMove();
+        print(_playerRigidbody.velocity);
+        if (!_isDamageState)
+        {
+            PlayerMove();
+        }
+        else
+        {
+            KnockBackEnd();
+        }
     }
 
     private void PlayerMove()
@@ -49,7 +63,6 @@ public class PlayerActionController : MonoBehaviour
         if (_moveVector.x != 0)
         {
             _directionVector = _moveVector;
-            print(_directionVector);
         }
         //確定最後面對方向 控制開火方向
 
@@ -79,10 +92,34 @@ public class PlayerActionController : MonoBehaviour
             _flameShot.SetActive(false);
         }
     }
-    //Fire up and scale are (x,y)=(1.0,1.5) position y= +2 or -2
 
-    // private void PlayerDirectionCheck(){
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (Time.time >= _nextDamageTime && other.gameObject.tag == "MeatEnemy")
+        {
+            _isDamageState = true;
+            _nextDamageTime = Time.time + _damageRate;
+            Vector2 _vectorDifference = (transform.position - other.transform.position).normalized;
+            Vector2 _force = _vectorDifference * _damageForce;
+            _contactVector = transform.position;
+            _playerRigidbody.velocity = _force;
 
-    // }
 
+        }
+    }
+
+    private void KnockBackEnd()
+    {
+
+        if (_isDamageState)
+        {
+            double a2 = Math.Pow(transform.position.x - _contactVector.x, 2) + Math.Pow(transform.position.y - _contactVector.y, 2);
+            if (Math.Sqrt(a2) >= 2f)
+            {
+                _playerRigidbody.velocity = Vector2.zero;
+                _isDamageState = false;
+            }
+        }
+
+    }
 }

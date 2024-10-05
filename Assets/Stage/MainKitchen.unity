@@ -946,6 +946,8 @@ MonoBehaviour:
   _moveVector: {x: 0, y: 0}
   _moveSpeed: 10
   _smoothTime: 0.05
+  _damageForce: 20
+  _damageRate: 0.5
   _flameShot: {fileID: 561122494}
 --- !u!50 &1581067660
 Rigidbody2D:
@@ -1035,7 +1037,7 @@ GameObject:
   - component: {fileID: 1888826519}
   m_Layer: 0
   m_Name: meat
-  m_TagString: Player
+  m_TagString: MeatEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
