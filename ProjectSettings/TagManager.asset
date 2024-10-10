@@ -8,6 +8,8 @@ TagManager:
   - FireDamage
   - MeatEnemy
   - MeatFood
+  - MeatRaw
+  - MeatBurnt
   layers:
   - Default
   - TransparentFX

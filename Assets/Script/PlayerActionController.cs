@@ -24,6 +24,8 @@ public class PlayerActionController : MonoBehaviour
     private bool _isDamageState = false;
     private Vector2 _contactVector = Vector2.zero;
 
+    private bool _isCarryMeat = false;
+
     [SerializeField] private GameObject _flameShot;
 
 
@@ -36,7 +38,7 @@ public class PlayerActionController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(_playerRigidbody.velocity);
+        // print(_playerRigidbody.velocity);
         if (!_isDamageState)
         {
             PlayerMove();
@@ -70,7 +72,7 @@ public class PlayerActionController : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext callbackContext)
     {
-        print(callbackContext);
+        // print(callbackContext);
 
         if (_directionVector.x > 0)
         {
@@ -93,6 +95,19 @@ public class PlayerActionController : MonoBehaviour
         }
     }
 
+    public void Carry(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            _isCarryMeat = true;
+        }
+        else if (callbackContext.canceled)
+        {
+            _isCarryMeat = false;
+        }
+        print(_isCarryMeat);
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (Time.time >= _nextDamageTime && other.gameObject.tag == "MeatEnemy")
@@ -103,8 +118,16 @@ public class PlayerActionController : MonoBehaviour
             Vector2 _force = _vectorDifference * _damageForce;
             _contactVector = transform.position;
             _playerRigidbody.velocity = _force;
+        }
+    }
 
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if ((other.gameObject.tag == "MeatFood" || other.gameObject.tag == "MeatBurnt") && _isCarryMeat)
+        {
+            other.transform.position =gameObject.transform.position;
+            print("carry");
         }
     }
 
