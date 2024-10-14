@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -23,11 +24,19 @@ public class PlayerActionController : MonoBehaviour
     private float _nextDamageTime = 0.0f;
     private bool _isDamageState = false;
     private Vector2 _contactVector = Vector2.zero;
+    private bool _touchWall = false;
 
     private bool _isCarryMeat = false;
 
-    [SerializeField] private GameObject _flameShot;
+    [SerializeField] private float _knockRate = 0.8f;
+    private float _nextknockTime = 0.0f;
+    private float _knockendTime = 0f;
+    private bool _isKnock = false;
 
+    [SerializeField] private GameObject _flameShot;
+    [SerializeField] private GameObject _knockBackObject;
+
+    [SerializeField] private GameObject _meatFoodCarry = null;
 
     void Start()
     {
@@ -43,10 +52,22 @@ public class PlayerActionController : MonoBehaviour
         {
             PlayerMove();
         }
-        else
+        else if (_isDamageState)
         {
             KnockBackEnd();
         }
+
+        if (_isKnock && Time.time >= _knockendTime)
+        {
+            _knockBackObject.SetActive(false);
+            _isKnock = false;
+        }
+
+        if (_isCarryMeat)
+        {
+            CarryMeatMove();
+        }
+
     }
 
     private void PlayerMove()
@@ -95,6 +116,30 @@ public class PlayerActionController : MonoBehaviour
         }
     }
 
+
+    public void Knock(InputAction.CallbackContext callbackContext)
+    {
+
+        if (_directionVector.x > 0)
+        {
+            _knockBackObject.transform.localPosition = new Vector2(1.65f, _knockBackObject.transform.localPosition.y);
+        }
+        else if (_directionVector.x < 0)
+        {
+            _knockBackObject.transform.localPosition = new Vector2(-1.65f, _knockBackObject.transform.localPosition.y);
+        }
+
+        if (callbackContext.started && !_isDamageState)
+        {
+            _knockendTime = Time.time + 0.1f;
+            _nextknockTime = Time.time + _knockRate;
+            _knockBackObject.SetActive(true);
+            _isKnock = true;
+            // print("knock");
+        }
+
+    }
+
     public void Carry(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
@@ -105,7 +150,15 @@ public class PlayerActionController : MonoBehaviour
         {
             _isCarryMeat = false;
         }
-        print(_isCarryMeat);
+    }
+
+    private void CarryMeatMove()
+    {
+        if (_meatFoodCarry != null)
+        {
+            _meatFoodCarry.transform.position = gameObject.transform.position + new Vector3(0, 0.65f);
+            print("carry");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -119,22 +172,42 @@ public class PlayerActionController : MonoBehaviour
             _contactVector = transform.position;
             _playerRigidbody.velocity = _force;
         }
+
+        if (other.gameObject.tag == "Wall")
+        {
+            _touchWall = true;
+        }
     }
 
-
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnCollisionExit2D(Collision2D other)
     {
-        if ((other.gameObject.tag == "MeatFood" || other.gameObject.tag == "MeatBurnt") && _isCarryMeat)
+        if (other.gameObject.tag == "Wall")
         {
-            other.transform.position =gameObject.transform.position;
-            print("carry");
+            _touchWall = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if ((other.gameObject.tag == "MeatFood" || other.gameObject.tag == "MeatBurnt") && _meatFoodCarry == null)
+        {
+            _meatFoodCarry = other.gameObject;
+            print("Enter " + _meatFoodCarry.name);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if ((other.gameObject.tag == "MeatFood" || other.gameObject.tag == "MeatBurnt") && !_isCarryMeat)
+        {
+            _meatFoodCarry = null;
         }
     }
 
     private void KnockBackEnd()
     {
 
-        if (_isDamageState)
+        if (!_touchWall)
         {
             double a2 = Math.Pow(transform.position.x - _contactVector.x, 2) + Math.Pow(transform.position.y - _contactVector.y, 2);
             if (Math.Sqrt(a2) >= 2f)
@@ -142,6 +215,11 @@ public class PlayerActionController : MonoBehaviour
                 _playerRigidbody.velocity = Vector2.zero;
                 _isDamageState = false;
             }
+        }
+        else if (_touchWall)
+        {
+            _playerRigidbody.velocity = Vector2.zero;
+            _isDamageState = false;
         }
 
     }
