@@ -51,7 +51,7 @@ public class MeatEnemyAction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         print("hit!");
-        if (other.gameObject.name == "KnockBack")
+        if (other.gameObject.name == "PunchBack")
         {
             _isHit = true;
             DoKnockBack();

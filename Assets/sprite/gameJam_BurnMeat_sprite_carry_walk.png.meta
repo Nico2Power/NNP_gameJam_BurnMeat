@@ -1,0 +1,314 @@
+fileFormatVersion: 2
+guid: ec43bdadde5cec84fa5043eba156b83e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3031754504501991041
+    second: gameJam_BurnMeat_sprite_carry_walk_0
+  - first:
+      213: -2490629957906915410
+    second: gameJam_BurnMeat_sprite_carry_walk_1
+  - first:
+      213: -2891112541958775466
+    second: gameJam_BurnMeat_sprite_carry_walk_2
+  - first:
+      213: 9085066333717236920
+    second: gameJam_BurnMeat_sprite_carry_walk_3
+  - first:
+      213: 9172045307886412363
+    second: gameJam_BurnMeat_sprite_carry_walk_4
+  - first:
+      213: -416376326656929824
+    second: gameJam_BurnMeat_sprite_carry_walk_5
+  - first:
+      213: -5598381743102024424
+    second: gameJam_BurnMeat_sprite_carry_walk_6
+  - first:
+      213: 3586888240378364746
+    second: gameJam_BurnMeat_sprite_carry_walk_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_carry_walk_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 11
+        width: 31
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45945945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f79e7f0575b0de5d0800000000000000
+      internalID: -3031754504501991041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_carry_walk_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 11
+        width: 31
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45945945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf130ccf318f6dd0800000000000000
+      internalID: -2490629957906915410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_carry_walk_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 11
+        width: 31
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45945945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ddedaf574b0e7d0800000000000000
+      internalID: -2891112541958775466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_carry_walk_3
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 11
+        width: 31
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45945945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bc831e12b3a41e70800000000000000
+      internalID: 9085066333717236920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_carry_walk_4
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 11
+        width: 31
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45945945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b42ab58ac96a94f70800000000000000
+      internalID: 9172045307886412363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_carry_walk_5
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 11
+        width: 31
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45945945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef4bbcdfebb83af0800000000000000
+      internalID: -416376326656929824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_carry_walk_6
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 11
+        width: 31
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45945945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8152f55577d8e42b0800000000000000
+      internalID: -5598381743102024424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_carry_walk_7
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 11
+        width: 31
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45945945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4347c8b9df27c130800000000000000
+      internalID: 3586888240378364746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 32cab2175e83b4447bd497ce042a882d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      gameJam_BurnMeat_sprite_carry_walk_0: -3031754504501991041
+      gameJam_BurnMeat_sprite_carry_walk_1: -2490629957906915410
+      gameJam_BurnMeat_sprite_carry_walk_2: -2891112541958775466
+      gameJam_BurnMeat_sprite_carry_walk_3: 9085066333717236920
+      gameJam_BurnMeat_sprite_carry_walk_4: 9172045307886412363
+      gameJam_BurnMeat_sprite_carry_walk_5: -416376326656929824
+      gameJam_BurnMeat_sprite_carry_walk_6: -5598381743102024424
+      gameJam_BurnMeat_sprite_carry_walk_7: 3586888240378364746
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

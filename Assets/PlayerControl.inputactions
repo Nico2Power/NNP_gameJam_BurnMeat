@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Knock",
+                    "name": "Punch",
                     "type": "Button",
                     "id": "126dcb32-3b00-4a6a-a645-b870cead2a25",
                     "expectedControlType": "Button",
@@ -127,7 +127,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Knock",
+                    "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
