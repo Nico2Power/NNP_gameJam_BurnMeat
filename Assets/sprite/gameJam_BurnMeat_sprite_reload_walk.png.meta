@@ -1,0 +1,714 @@
+fileFormatVersion: 2
+guid: 0c04bfd430a349549be02d23a85737c2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5120589208222746533
+    second: gameJam_BurnMeat_sprite_reload_walk_0
+  - first:
+      213: 5387588394923581268
+    second: gameJam_BurnMeat_sprite_reload_walk_1
+  - first:
+      213: 6671822769286387028
+    second: gameJam_BurnMeat_sprite_reload_walk_2
+  - first:
+      213: 2405772881481092655
+    second: gameJam_BurnMeat_sprite_reload_walk_3
+  - first:
+      213: -8165686790288462686
+    second: gameJam_BurnMeat_sprite_reload_walk_4
+  - first:
+      213: 6129987281352357827
+    second: gameJam_BurnMeat_sprite_reload_walk_5
+  - first:
+      213: 6975111237558262040
+    second: gameJam_BurnMeat_sprite_reload_walk_6
+  - first:
+      213: -2665772143893401350
+    second: gameJam_BurnMeat_sprite_reload_walk_7
+  - first:
+      213: -4845101276007989574
+    second: gameJam_BurnMeat_sprite_reload_walk_8
+  - first:
+      213: 4511127919833213067
+    second: gameJam_BurnMeat_sprite_reload_walk_9
+  - first:
+      213: -5868147297609984734
+    second: gameJam_BurnMeat_sprite_reload_walk_10
+  - first:
+      213: -4703892117895684566
+    second: gameJam_BurnMeat_sprite_reload_walk_11
+  - first:
+      213: 3127248238702226262
+    second: gameJam_BurnMeat_sprite_reload_walk_12
+  - first:
+      213: 7465387551985757934
+    second: gameJam_BurnMeat_sprite_reload_walk_13
+  - first:
+      213: -2058706347978313152
+    second: gameJam_BurnMeat_sprite_reload_walk_14
+  - first:
+      213: -4573594056523713754
+    second: gameJam_BurnMeat_sprite_reload_walk_15
+  - first:
+      213: 806830305759006744
+    second: gameJam_BurnMeat_sprite_reload_walk_16
+  - first:
+      213: -891867399198249859
+    second: gameJam_BurnMeat_sprite_reload_walk_17
+  - first:
+      213: -7655302739997637213
+    second: gameJam_BurnMeat_sprite_reload_walk_18
+  - first:
+      213: 6992237141038520563
+    second: gameJam_BurnMeat_sprite_reload_walk_19
+  - first:
+      213: 7036151712656091429
+    second: gameJam_BurnMeat_sprite_reload_walk_20
+  - first:
+      213: 7609564254473407512
+    second: gameJam_BurnMeat_sprite_reload_walk_21
+  - first:
+      213: 1826568806067774794
+    second: gameJam_BurnMeat_sprite_reload_walk_22
+  - first:
+      213: 7019292936617434111
+    second: gameJam_BurnMeat_sprite_reload_walk_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 30
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 11
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7c0dc31ccff0740800000000000000
+      internalID: 5120589208222746533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 11
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45fdf6bb91f84ca40800000000000000
+      internalID: 5387588394923581268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_2
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4559da7b573179c50800000000000000
+      internalID: 6671822769286387028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_3
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2ec2fa70b5036120800000000000000
+      internalID: 2405772881481092655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_4
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aca1cdb027adae80800000000000000
+      internalID: -8165686790288462686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_5
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c77bae44f6121550800000000000000
+      internalID: 6129987281352357827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_6
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 819de7ff6b29cc060800000000000000
+      internalID: 6975111237558262040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_7
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af03a17eb56410bd0800000000000000
+      internalID: -2665772143893401350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_8
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abe70c65f0eb2ccb0800000000000000
+      internalID: -4845101276007989574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_9
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b88610e21feba9e30800000000000000
+      internalID: 4511127919833213067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_10
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 11
+        width: 31
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 225d944af17209ea0800000000000000
+      internalID: -5868147297609984734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_11
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 11
+        width: 31
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e51138a0b68beb0800000000000000
+      internalID: -4703892117895684566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_12
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 11
+        width: 31
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5151515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65bef4844b7366b20800000000000000
+      internalID: 3127248238702226262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_13
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 11
+        width: 31
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5151515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeeebbadc626a9760800000000000000
+      internalID: 7465387551985757934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_14
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 11
+        width: 32
+        height: 33
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5151515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04239e7eb710e63e0800000000000000
+      internalID: -2058706347978313152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_15
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 11
+        width: 32
+        height: 33
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5151515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 623f01200745780c0800000000000000
+      internalID: -4573594056523713754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_16
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81019c863ef623b00800000000000000
+      internalID: 806830305759006744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_17
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c690463537f93f0800000000000000
+      internalID: -891867399198249859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_18
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a5cd5ea7b6e2c590800000000000000
+      internalID: -7655302739997637213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_19
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8d4e022aa690160800000000000000
+      internalID: 6992237141038520563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_20
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5296f9a14be65a160800000000000000
+      internalID: 7036151712656091429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_21
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 11
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81cc56b4f5a9a9960800000000000000
+      internalID: 7609564254473407512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_22
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 11
+        width: 31
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a45aa7bc6a6495910800000000000000
+      internalID: 1826568806067774794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameJam_BurnMeat_sprite_reload_walk_23
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 11
+        width: 31
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48387095, y: 0.4848485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffb9d7d6cb9896160800000000000000
+      internalID: 7019292936617434111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5f42ea5eb1a4584438a850d9ae3a52b7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      gameJam_BurnMeat_sprite_reload_walk_0: 5120589208222746533
+      gameJam_BurnMeat_sprite_reload_walk_1: 5387588394923581268
+      gameJam_BurnMeat_sprite_reload_walk_10: -5868147297609984734
+      gameJam_BurnMeat_sprite_reload_walk_11: -4703892117895684566
+      gameJam_BurnMeat_sprite_reload_walk_12: 3127248238702226262
+      gameJam_BurnMeat_sprite_reload_walk_13: 7465387551985757934
+      gameJam_BurnMeat_sprite_reload_walk_14: -2058706347978313152
+      gameJam_BurnMeat_sprite_reload_walk_15: -4573594056523713754
+      gameJam_BurnMeat_sprite_reload_walk_16: 806830305759006744
+      gameJam_BurnMeat_sprite_reload_walk_17: -891867399198249859
+      gameJam_BurnMeat_sprite_reload_walk_18: -7655302739997637213
+      gameJam_BurnMeat_sprite_reload_walk_19: 6992237141038520563
+      gameJam_BurnMeat_sprite_reload_walk_2: 6671822769286387028
+      gameJam_BurnMeat_sprite_reload_walk_20: 7036151712656091429
+      gameJam_BurnMeat_sprite_reload_walk_21: 7609564254473407512
+      gameJam_BurnMeat_sprite_reload_walk_22: 1826568806067774794
+      gameJam_BurnMeat_sprite_reload_walk_23: 7019292936617434111
+      gameJam_BurnMeat_sprite_reload_walk_3: 2405772881481092655
+      gameJam_BurnMeat_sprite_reload_walk_4: -8165686790288462686
+      gameJam_BurnMeat_sprite_reload_walk_5: 6129987281352357827
+      gameJam_BurnMeat_sprite_reload_walk_6: 6975111237558262040
+      gameJam_BurnMeat_sprite_reload_walk_7: -2665772143893401350
+      gameJam_BurnMeat_sprite_reload_walk_8: -4845101276007989574
+      gameJam_BurnMeat_sprite_reload_walk_9: 4511127919833213067
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
