@@ -14,19 +14,17 @@ public class UIAction : MonoBehaviour
     [SerializeField] SpriteRenderer[] _gunAmmoSpriteRenderer = new SpriteRenderer[1];
     [SerializeField] Sprite[] _numberSprite = new Sprite[9];
 
+    [SerializeField] SpriteRenderer[] _timeSpriteRenderer = new SpriteRenderer[3];
+
     void Start()
     {
 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Keyboard.current.wKey.wasPressedThisFrame)
-        {
-            GunAmmoUI(10);
-        }
-
+        TimerUI();
     }
 
     public void GunAmmoUI(int ammo)
@@ -50,6 +48,26 @@ public class UIAction : MonoBehaviour
                 print("die!!!!!!!!!!");
             }
         }
+    }
+
+    private void TimerUI()
+    {
+        (int minuts, int second) = GetTimer();
+        int minuts10 = minuts / 10;
+        int minuts1 = minuts % 10;
+        int second10 = second / 10;
+        int second1 = second % 10;
+        _timeSpriteRenderer[0].sprite = _numberSprite[minuts10];
+        _timeSpriteRenderer[1].sprite = _numberSprite[minuts1];
+        _timeSpriteRenderer[2].sprite = _numberSprite[second10];
+        _timeSpriteRenderer[3].sprite = _numberSprite[second1];
+    }
+
+    private (int, int) GetTimer()
+    {
+        int minuts = (int)Time.time / 60;
+        int second = (int)Time.time % 60;
+        return (minuts, second);
     }
 
 }

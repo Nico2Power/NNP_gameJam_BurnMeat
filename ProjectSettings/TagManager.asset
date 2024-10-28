@@ -10,6 +10,8 @@ TagManager:
   - MeatFood
   - MeatRaw
   - MeatBurnt
+  - Gate
+  - MeatDark
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Meat
+  - Player
   - 
   - 
   - 
@@ -46,4 +48,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: effect
+    uniqueID: 774670541
+    locked: 0
+  - name: Meat
+    uniqueID: 3718521917
+    locked: 0
+  - name: player
+    uniqueID: 3490519421
     locked: 0

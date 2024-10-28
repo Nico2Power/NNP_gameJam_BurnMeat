@@ -177,8 +177,12 @@ public class PlayerActionController : MonoBehaviour
     {
         if (_isFire && !_isPunch && !_isReload)
         {
-            _flameShot.SetActive(true);
-            _playerAnimator.SetBool("isFire", true);
+
+            if (_gunAmmo > 0)
+            {
+                _flameShot.SetActive(true);
+                _playerAnimator.SetBool("isFire", true);
+            }
 
             if (Time.time >= _nextAmmoTime && _gunAmmo > 0)
             {
@@ -265,7 +269,6 @@ public class PlayerActionController : MonoBehaviour
         {
             _playerAnimator.SetBool("isCarry", false);
         }
-
     }
 
     private void PlayerDown()
@@ -279,7 +282,7 @@ public class PlayerActionController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         //受傷
-        if (Time.time >= _nextDamageTime && other.gameObject.tag == "MeatEnemy")
+        if (Time.time >= _nextDamageTime && (other.gameObject.tag == "MeatEnemy" || other.gameObject.tag == "MeatDark"))
         {
             if (_playerHp > 0)
             {
