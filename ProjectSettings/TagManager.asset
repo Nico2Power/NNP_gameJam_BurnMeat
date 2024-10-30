@@ -21,7 +21,7 @@ TagManager:
   - UI
   - Meat
   - Player
-  - 
+  - Ground
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 251973565
+    locked: 0
   - name: effect
     uniqueID: 774670541
     locked: 0
@@ -57,4 +60,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 3490519421
+    locked: 0
+  - name: PauseCanvas
+    uniqueID: 4146626849
     locked: 0

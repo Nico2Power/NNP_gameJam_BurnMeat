@@ -8,12 +8,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerActionController : MonoBehaviour
 {
     // Start is called before the first frame update
 
     private Rigidbody2D _playerRigidbody;
+    private Collider2D _playerCollider;
     [SerializeField] private Vector2 _moveVector = Vector2.zero;
     [SerializeField] private float _moveSpeed = 10f;
     private Vector2 _smoothMove;
@@ -35,6 +38,8 @@ public class PlayerActionController : MonoBehaviour
     private bool _isFire = false;
     private bool _isReload = false;
     private bool _isDown = false;
+    private bool _isSlow = false;
+    private bool _isPressButton = false;
 
     [SerializeField] private int _gunAmmo = 50;
     [SerializeField] private float _ammoRate = 0.25f;
@@ -42,19 +47,41 @@ public class PlayerActionController : MonoBehaviour
 
     [SerializeField] private GameObject _flameShot;
     [SerializeField] private GameObject _punchBackObject;
+    [SerializeField] private GameObject _carryItem;
+
 
     [SerializeField] private GameObject _meatFoodCarry = null;
     [SerializeField] private UIAction _UI;
 
     private SpriteRenderer _playerSpriteRenderer;
+    private SpriteRenderer _punchSpriteRenderer;
+    private SpriteRenderer _fireSpriteRenderer;
+
+
     private Animator _playerAnimator;
+
+    private PlayerInput _playInputMap;
+    public AudioAction _AA;
 
     void Start()
     {
+        _AA = GameObject.Find("AudioControl").GetComponent<AudioAction>();
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _flameShot.SetActive(false);
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
         _playerAnimator = GetComponent<Animator>();
+        _playInputMap = GetComponent<PlayerInput>();
+        _playerCollider = GetComponent<Collider2D>();
+        _UI = GameObject.Find("UI").GetComponent<UIAction>();
+        _playInputMap.SwitchCurrentActionMap("PlayerNormal");
+        _punchSpriteRenderer = _punchBackObject.GetComponent<SpriteRenderer>();
+        _fireSpriteRenderer = _flameShot.GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
+    {
+        if (Time.timeScale == 0.0f && _playInputMap.currentActionMap.name == "PlayerNormal") _playInputMap.SwitchCurrentActionMap("PlayerPause");
+        else if (Time.timeScale == 1.0f && _playInputMap.currentActionMap.name == "PlayerPause") _playInputMap.SwitchCurrentActionMap("PlayerNormal");
     }
 
     // Update is called once per frame
@@ -71,11 +98,13 @@ public class PlayerActionController : MonoBehaviour
         {
             KnockBackEnd();
         }
-
     }
+
 
     private void PlayerMove()
     {
+
+        if (_isSlow) _moveSpeed = 5f; else if (!_isSlow) _moveSpeed = 10f;
 
         _smoothMove = Vector2.SmoothDamp(_smoothMove, _moveVector, ref _smoothVector, _smoothTime);
         _playerRigidbody.velocity = _smoothMove * _moveSpeed;
@@ -89,6 +118,8 @@ public class PlayerActionController : MonoBehaviour
             _playerSpriteRenderer.flipX = true;
         }
 
+        if (_playerSpriteRenderer.flipX == true) _playerCollider.offset = new Vector2(0.17f, 0);
+        else if (_playerSpriteRenderer.flipX == false) _playerCollider.offset = new Vector2(-0.17f, 0);
         // print(_smoothMove);
         //利用SmoothDamp會逐漸達到目標值(_moveVector)的功能來實現平滑移動,而非直接的移動
     }
@@ -132,16 +163,21 @@ public class PlayerActionController : MonoBehaviour
         {
             if (callbackContext.started)
             {
+                _isPressButton = true;
                 _isFire = true;
                 _fireVectorX = _directionVector.x;
                 if (_directionVector.x > 0)
                 {
-                    _flameShot.transform.localPosition = new Vector2(1.5f, _flameShot.transform.localPosition.y);
+                    _flameShot.transform.localPosition = new Vector2(1.63f, _flameShot.transform.localPosition.y);
+                    _fireSpriteRenderer.flipX = false;
                 }
                 else if (_directionVector.x < 0)
                 {
-                    _flameShot.transform.localPosition = new Vector2(-1.5f, _flameShot.transform.localPosition.y);
+                    _flameShot.transform.localPosition = new Vector2(-1.63f, _flameShot.transform.localPosition.y);
+                    _fireSpriteRenderer.flipX = true;
+
                 }
+                _AA.PlayClip(1, "FireKeepSE", true);
             }
 
             if (callbackContext.canceled)
@@ -169,7 +205,6 @@ public class PlayerActionController : MonoBehaviour
             _gunAmmo = 50;
             _isReload = false;
             _UI.GunAmmoUI(_gunAmmo);
-            print("reload");
         }
     }
 
@@ -198,10 +233,16 @@ public class PlayerActionController : MonoBehaviour
         }
         else if (!_isFire || _isPunch || _isReload)
         {
+
             _playerAnimator.SetFloat("PlayerMove", Math.Abs(_moveVector.x) + Math.Abs(_moveVector.y));
             _flameShot.SetActive(false);
             _playerAnimator.SetBool("isFire", false);
             _playerAnimator.SetBool("isBack", false);
+        }
+        if (!_isFire && _isPressButton)
+        {
+            _AA.StopClip(1, "FireKeepSE");
+            _isPressButton = false;
         }
     }
 
@@ -211,16 +252,19 @@ public class PlayerActionController : MonoBehaviour
         if ((_directionVector.x > 0 && !_isFire) || (_fireVectorX > 0 && _isFire))
         {
             _punchBackObject.transform.localPosition = new Vector2(0.825f, _punchBackObject.transform.localPosition.y);
+            _punchSpriteRenderer.flipX = false;
         }
         else if ((_directionVector.x < 0 && !_isFire) || (_fireVectorX < 0 && _isFire))
         {
             _punchBackObject.transform.localPosition = new Vector2(-0.825f, _punchBackObject.transform.localPosition.y);
+            _punchSpriteRenderer.flipX = true;
         }
 
         if (callbackContext.started && !_isDamageState && !_isPunch && !_isDown)
         {
             _flameShot.SetActive(false);
             _playerAnimator.SetTrigger("isPunch");
+            _AA.PlayClip(2, "PunchSE", false);
             _playerAnimator.SetBool("isFire", false);
             _isCarryMeat = false;
             _isReload = false;
@@ -249,9 +293,15 @@ public class PlayerActionController : MonoBehaviour
         {
             _isCarryMeat = true;
         }
+        if (callbackContext.started && _isFire)
+        {
+            _isSlow = true;
+        }
         else if (callbackContext.canceled)
         {
             _isCarryMeat = false;
+            _isSlow = false;
+
         }
     }
 
@@ -260,6 +310,8 @@ public class PlayerActionController : MonoBehaviour
         if (_isCarryMeat)
         {
             _playerAnimator.SetBool("isCarry", true);
+            _carryItem.SetActive(true);
+
             if (_meatFoodCarry != null)
             {
                 _meatFoodCarry.transform.position = gameObject.transform.position + new Vector3(0, 0.65f);
@@ -268,6 +320,8 @@ public class PlayerActionController : MonoBehaviour
         else
         {
             _playerAnimator.SetBool("isCarry", false);
+            _carryItem.SetActive(false);
+
         }
     }
 
@@ -277,6 +331,10 @@ public class PlayerActionController : MonoBehaviour
         _isDown = true;
         _isDamageState = false;
         _isFire = false;
+        _AA.PlayClip(2, "DieSE", false);
+        UIAction._playerTime = Time.timeSinceLevelLoad;
+        SceneManager.LoadScene(sceneName: "StartKitchen");
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -294,6 +352,7 @@ public class PlayerActionController : MonoBehaviour
                 _playerRigidbody.velocity = _force;
                 _playerAnimator.SetTrigger("isDamage");
                 _UI.DamageUI();
+                _AA.PlayClip(2, "PlayerDagameSE", false);
                 _playerHp--;
             }
             else if (_playerHp <= 0)
@@ -323,7 +382,6 @@ public class PlayerActionController : MonoBehaviour
         if ((other.gameObject.tag == "MeatFood" || other.gameObject.tag == "MeatBurnt") && _meatFoodCarry == null)
         {
             _meatFoodCarry = other.gameObject;
-            print("Enter " + _meatFoodCarry.name);
         }
     }
 
@@ -354,6 +412,7 @@ public class PlayerActionController : MonoBehaviour
         }
 
     }
+
 
 
 }

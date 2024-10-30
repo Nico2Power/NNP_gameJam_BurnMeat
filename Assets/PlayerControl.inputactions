@@ -152,6 +152,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PlayerPause",
+            "id": "bdf3c0c0-94f0-4790-8fb8-b760c808bd5a",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": []

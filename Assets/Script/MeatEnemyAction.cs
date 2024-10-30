@@ -24,7 +24,7 @@ public class MeatEnemyAction : MonoBehaviour
 
     [SerializeField] private Vector3 _playLastPosition = Vector3.zero;
     [SerializeField] private GameObject _playerGameObject;
-    [SerializeField] private float _meatMoveSpeed = 5f;
+    [SerializeField] private float _meatMoveSpeed = 4f;
     private bool _touchPlayer = false;
     private float _nextTrackTime = 1.0f;
 
@@ -35,14 +35,20 @@ public class MeatEnemyAction : MonoBehaviour
 
     [SerializeField] GameObject[] _hpGameObject = new GameObject[3];
 
-    private bool _isEnterGround = false;
-    void Start()
-    {
-        _meatEnemyRigidbody = GetComponent<Rigidbody2D>();
-        _meatRenderer = GetComponent<SpriteRenderer>();
-        _meatRenderer.color = new Color32(108, 222, 243, 255);
-        _meatCollider = GetComponent<Collider2D>();
+    public List<Sprite> _meatSpriteList = new List<Sprite>();
+    public AudioAction _AA;
 
+
+    private bool _isEnterGround = false;
+
+    void Awake()
+    {
+        _AA = GameObject.Find("AudioControl").GetComponent<AudioAction>();
+        _playerGameObject = GameObject.Find("Player");
+        _meatEnemyRigidbody = gameObject.GetComponent<Rigidbody2D>();
+        _meatRenderer = gameObject.GetComponent<SpriteRenderer>();
+        _meatCollider = gameObject.GetComponent<Collider2D>();
+        _meatRenderer.sprite = _meatSpriteList[0];
     }
 
     private void FixedUpdate()
@@ -70,6 +76,7 @@ public class MeatEnemyAction : MonoBehaviour
         if (other.gameObject.name == "PunchBack")
         {
             _isHit = true;
+            _AA.PlayClip(3, "PunchHitSE", false);
             DoKnockBack();
         }
 
@@ -78,7 +85,7 @@ public class MeatEnemyAction : MonoBehaviour
             OverWallPoistion(other);
         }
 
-        if (other.gameObject.tag == "Gate")
+        if (other.gameObject.tag == "Gate" && _wallColllider2D != null)
         {
             _isEnterGround = true;
             Physics2D.IgnoreCollision(_wallColllider2D, _meatCollider, false);
@@ -93,7 +100,6 @@ public class MeatEnemyAction : MonoBehaviour
             HPControl();
             HpBarControl();
             _nextDamageTime = Time.time + _damageRate;
-            print("fire!!!!!!!!!!!!" + _nextDamageTime);
         }
 
         if (other.gameObject.tag == "Wall" && gameObject.tag != "MeatEnemy")
@@ -106,8 +112,9 @@ public class MeatEnemyAction : MonoBehaviour
     {
         if (gameObject.tag != "MeatDark")
         {
-            if (_coldHP > 0) _coldHP -= 5;
-            else _donenessHP -= 5;
+            if (_coldHP > 0) _coldHP -= 10;
+            else if (gameObject.tag == "MeatRaw") _donenessHP -= 10;
+            else if (gameObject.tag == "MeatFood") _donenessHP -= 5;
 
             _darknessPoint = 0;
         }
@@ -130,7 +137,6 @@ public class MeatEnemyAction : MonoBehaviour
     {
         _meatEnemyRigidbody.velocity = Vector2.zero;
         _meatEnemyRigidbody.angularVelocity = 0;
-        print("wall");
 
         switch (wall.gameObject.name)
         {
@@ -153,18 +159,12 @@ public class MeatEnemyAction : MonoBehaviour
     {
         if (gameObject.tag != "MeatDark")
         {
-            if (_coldHP > 0) //冷凍肉
-            {
-                print("解凍中");
-            }
 
             if (_coldHP <= 0 && _donenessHP <= 100 && _donenessHP > 30) //生肉
             {
                 gameObject.tag = "MeatRaw";
-                print("烤肉中");
-                _meatRenderer.color = new Color32(241, 124, 129, 255);
+                _meatRenderer.sprite = _meatSpriteList[1];
                 _meatCollider.isTrigger = true;
-                print(gameObject.transform.localRotation.eulerAngles.z);
                 if (gameObject.transform.localRotation.eulerAngles.z == 0)
                 {
                     gameObject.transform.Rotate(0, 0, 90);
@@ -174,15 +174,13 @@ public class MeatEnemyAction : MonoBehaviour
             if (_coldHP <= 0 && _donenessHP <= 30 && _donenessHP > 0)//熟肉
             {
                 gameObject.tag = "MeatFood";
-                print("熟的剛好");
-                _meatRenderer.color = new Color32(150, 99, 99, 255);
+                _meatRenderer.sprite = _meatSpriteList[2];
             }
 
             if (_coldHP <= 0 && _donenessHP <= 0)//烤焦
             {
                 gameObject.tag = "MeatBurnt";
-                print("全熟有點焦");
-                _meatRenderer.color = new Color32(56, 23, 23, 255);
+                _meatRenderer.sprite = _meatSpriteList[3];
             }
         }
         else if (gameObject.tag == "MeatDark")
@@ -190,8 +188,9 @@ public class MeatEnemyAction : MonoBehaviour
             if (_darknessPoint <= 0)//烤焦
             {
                 gameObject.tag = "MeatBurnt";
-                print("全熟有點焦");
-                _meatRenderer.color = new Color32(56, 23, 23, 255);
+                _meatCollider.isTrigger = true;
+                _meatRenderer.sprite = _meatSpriteList[3];
+
             }
         }
 
@@ -199,9 +198,9 @@ public class MeatEnemyAction : MonoBehaviour
 
     private void HpBarControl()
     {
-        float coldScale = (float)_coldHP * 2 / 100;
-        float donenessScale = (float)(_donenessHP - 30) * 2 / 70;
-        float burntScale = (float)_donenessHP * 2 / 30;
+        float coldScale = (float)_coldHP / 100;
+        float donenessScale = (float)(_donenessHP - 30) / 70;
+        float burntScale = (float)_donenessHP / 30;
 
         if (_coldHP >= 0)
         {
@@ -222,7 +221,7 @@ public class MeatEnemyAction : MonoBehaviour
 
         if (gameObject.tag == "MeatDark" && _darknessPoint >= 0)
         {
-            float darknessScale = (float)_darknessPoint * 2 / 100;
+            float darknessScale = (float)_darknessPoint / 100;
             _hpGameObject[3].transform.localScale = new Vector3(darknessScale, _hpGameObject[3].transform.localScale.y, _hpGameObject[3].transform.localScale.z);
         }
     }
@@ -236,7 +235,7 @@ public class MeatEnemyAction : MonoBehaviour
             {
                 if (_darknessPoint < _darknessPointMax && Time.time >= _nextDarknessTime)
                 {
-                    _darknessPoint += 10;
+                    _darknessPoint += 5;
                     _nextDarknessTime = Time.time + 1f;
                     lastMeatPosition = gameObject.transform.position;
                 }
@@ -244,15 +243,14 @@ public class MeatEnemyAction : MonoBehaviour
                 if (gameObject.transform.position != lastMeatPosition) _darknessPoint = 0;
 
 
-                float darknessScale = (float)_darknessPoint * 2 / 100;
+                float darknessScale = (float)_darknessPoint / 100;
                 _hpGameObject[3].transform.localScale = new Vector3(darknessScale, _hpGameObject[3].transform.localScale.y, _hpGameObject[3].transform.localScale.z);
 
                 if (_darknessPoint >= _darknessPointMax)
                 {
                     gameObject.tag = "MeatDark";
-                    _meatRenderer.color = new Color32(189, 0, 195, 255);
+                    _meatRenderer.sprite = _meatSpriteList[4];
                     _meatCollider.isTrigger = false;
-                    _meatMoveSpeed = 6f;
                     _donenessHP = 0;
                 }
             }
