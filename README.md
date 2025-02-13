@@ -80,3 +80,18 @@ C+Z(Hold)可使噴火時緩速移動
 5.腐敗肉︰在非冷凍肉狀態下會持續增加腐敗度，  
 當受到攻擊或搬運腐敗度則會歸零，而當腐敗度到100時則會成為腐敗肉。  
 會追蹤並攻擊玩家，受到火焰攻擊會扣除腐敗度(-10)，歸零時則會變成焦肉。  
+  
+## **程式實作**
+### **揮擊**  
+![image](https://github.com/user-attachments/assets/e8011d19-15d9-4eba-a78a-bed83abbdb0f)  
+![image](https://github.com/user-attachments/assets/53862c4e-40c5-4cb4-8cc9-5db831850289)  
+  
+### **搬運**
+![image](https://github.com/user-attachments/assets/0f4f77ed-e86e-4622-b773-058e46f13010)  
+![image](https://github.com/user-attachments/assets/92de39a9-fa71-4b9a-83e9-466e3640eb2d)  
+![image](https://github.com/user-attachments/assets/7ad4772f-2fe8-4783-b9eb-22112a6d7d18)  
+
+
+
+
+
