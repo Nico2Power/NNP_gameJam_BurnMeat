@@ -1,5 +1,5 @@
 # 《BurnMeatYAKINIKU》
-#**遊玩連結**
+#  **遊玩連結**
 https://niconicopower.itch.io/burnmeatyakiniku
 
 # **玩法發想**
