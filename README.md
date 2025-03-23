@@ -1,4 +1,6 @@
 # 《BurnMeatYAKINIKU》
+#**遊玩連結**
+https://niconicopower.itch.io/burnmeatyakiniku
 
 # **玩法發想**
 以倖存者類型作為基礎構思，但不想以單純打怪與拉長生存時間作為玩家得分目標，  
